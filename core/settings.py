@@ -41,7 +41,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "home/templates")
+            os.path.join(BASE_DIR, "home/templates"),
+            os.path.join(BASE_DIR, "accounts/templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -63,7 +64,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
+        'ENGINE': f'django.db.backends.{config("DB_ENGINE")}',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
