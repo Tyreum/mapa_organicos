@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mapa'
+    'accounts',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -40,7 +41,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "mapa/templates")
+            os.path.join(BASE_DIR, "home/templates"),
+            os.path.join(BASE_DIR, "accounts/templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -62,7 +64,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': f'django.db.backends.{config("DB_ENGINE")}',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
@@ -109,7 +111,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'mapa/static')
+        os.path.join(BASE_DIR, 'home/static'),
+        os.path.join(BASE_DIR, 'accounts/static'),
     ]
 
 if not DEBUG:
