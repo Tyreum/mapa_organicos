@@ -86,3 +86,41 @@ html, body{
     display: flex;
     flex-direction: column;
 }
+
+.map-filter-container{
+    min-height: 8rem;
+    height: 8rem;
+    margin: 1rem;
+    background-color: #eaeaea;
+    border-radius: 10px;
+}
+
+.map-container{
+    min-height: 40rem;
+    height: 40rem;
+    margin: 1rem;
+    background-color: #eaeaea;
+    border-radius: 10px;
+}
+
+.list-container{
+    height: 65rem;
+    margin: 1rem;
+    background-color: #eaeaea;
+    border-radius: 10px;
+}
+
+.register-button{
+    padding: 1.2rem;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #017e37;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+#map{
+    width: 101rem;
+    height: 40rem;
+    border-radius: 12px;
+}

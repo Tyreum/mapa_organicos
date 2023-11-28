@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/home.styles.css' %}">
 </head>
@@ -42,9 +43,19 @@
 
         <div class="navbar-user-icon">
 
-            <div class="icon-container">
-                <i class="fa-solid fa-user"></i>
-            </div>
+            {% if user.is_autheticated %}
+
+                <div class="icon-container">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            
+            {% else %}
+
+                <a href="/" class="register-button">
+                    Registre-se
+                </a>
+
+            {% endif %}
 
         </div>
 
@@ -56,10 +67,25 @@
 
         <div class="content-container">
 
+            <div class="map-filter-container">
+
+            </div>
+
+            <div class="map-container">
+
+                <div id="map"></div>
+
+            </div>
+
+            <div class="list-container">
+
+            </div>
+
         </div>
 
     </section>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/fontawesome.min.js" integrity="sha512-64O4TSvYybbO2u06YzKDmZfLj/Tcr9+oorWhxzE3yDnmBRf7wvDgQweCzUf5pm2xYTgHMMyk5tW8kWU92JENng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/build/home.bundle.js' %}"></script>
 </body>
