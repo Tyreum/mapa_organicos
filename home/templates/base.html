@@ -17,27 +17,12 @@
         </div>
 
         <div class="navbar-items-container">
-            <!-- <ul>
-                <li>
-                    <a href="/">Inicio</a>
-                </li>
-                <li>
-                    <a>Mapas</a>
-                </li>
-                <li>
-                    <a>Lista</a>
-                </li>
-                <li>
-                    <a>Sobre</a>
-                </li>
-            </ul> -->
+
         </div>
 
         <div class="navbar-searchbar">
 
-            <!-- <form>
-                <input type="text">
-            </form> -->
+       
 
         </div>
 
@@ -51,9 +36,14 @@
             
             {% else %}
 
-                <a href="/" class="register-button">
+                <a class="register-button" id="registerButton">
                     Registre-se
                 </a>
+
+                <div class="register-options" id="registerOptions">
+                    <a>Usuario</a>
+                    <a>Produtor</a>
+                </div>
 
             {% endif %}
 
@@ -68,6 +58,42 @@
         <div class="content-container">
 
             <div class="map-filter-container">
+
+                <form class="map-filter-form">
+                    <div class="filter-box">
+                        <label>Distancia</label>
+                        <div class="range-container">
+                            <input type="range" min="1" max="30" step="1" value="1" id="kilometerRange">
+                            <div class="range-mark" id="rangeMark1">1 km</div>
+                            <div class="range-mark" id="rangeMark5">5 km</div>
+                            <div class="range-mark" id="rangeMark10">10 km</div>
+                            <div class="range-mark" id="rangeMark20">20 km</div>
+                            <div class="range-mark" id="rangeMark30">30+ km</div>  
+                        </div>
+                    </div>
+
+                    <div class="filter-box">
+                        <label>Nome produtor</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="filter-box">
+                        <label>Bairro</label>
+                        <select>
+                            <option>ds</option>
+                            <option>ds</option>
+                            <option>ds</option>
+                            <option>ds</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-box">
+                        <div>
+                            Buscar
+                        </div>
+                    </div>
+
+                </form>
 
             </div>
 

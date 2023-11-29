@@ -1,8 +1,7 @@
 import L from 'leaflet';
-// import 'leaflet/dist/leaflet.css'
 
 
-function teste(){
+function createMap(){
     const ma = L.map('map').setView([-23.555, -46.635], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -11,5 +10,20 @@ function teste(){
 }
 
 
+async function addRegisterButtonDropDown(){
+    const registerButton = document.getElementById('registerButton');
+    const registerOptions = document.getElementById('registerOptions')
 
-teste()
+    registerButton.addEventListener('click', () => {
+        if(registerOptions.style.display === 'none'){
+            registerOptions.style.display = 'flex';
+        }else{
+            registerOptions.style.display = 'none'
+        }
+    })
+} 
+
+
+
+addRegisterButtonDropDown()
+createMap()
