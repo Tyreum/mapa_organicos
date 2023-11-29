@@ -91,7 +91,7 @@ html, body{
     min-height: 8rem;
     height: 8rem;
     margin: 1rem;
-    background-color: #eaeaea;
+    background-color: #f7f6f6;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -108,6 +108,21 @@ html, body{
     align-items: center;
     justify-content: center;
     width: 20rem;
+}
+
+.filter-input-text{
+    height: 1.75rem;
+    width: 17rem;
+    border-radius: 25px;
+    border: 1px solid #fff;
+}
+
+.filter-select-box{
+    width: 10rem;
+    border: none;
+    height: 1.5rem;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .map-container{
@@ -170,6 +185,16 @@ html, body{
 .range-container {
     width: 100%;
   }
+
+.buscar-button{
+    padding: 1rem;
+    width: 4rem;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #E5F6DD;
+    color: #007c35;
+    cursor: pointer;
+}
 
   input[type="range"] {
     width: 100%;

@@ -41,8 +41,8 @@
                 </a>
 
                 <div class="register-options" id="registerOptions">
-                    <a>Usuario</a>
-                    <a>Produtor</a>
+                    <a href="/register?tipo=usuario">Usuario</a>
+                    <a href="/register?tipo=produtor">Produtor</a>
                 </div>
 
             {% endif %}
@@ -74,12 +74,12 @@
 
                     <div class="filter-box">
                         <label>Nome produtor</label>
-                        <input type="text">
+                        <input type="text" class="filter-input-text">
                     </div>
 
                     <div class="filter-box">
                         <label>Bairro</label>
-                        <select>
+                        <select class="filter-select-box">
                             <option>ds</option>
                             <option>ds</option>
                             <option>ds</option>
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="filter-box">
-                        <div>
+                        <div class="buscar-button">
                             Buscar
                         </div>
                     </div>
