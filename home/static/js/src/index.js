@@ -1,12 +1,19 @@
-import L from 'leaflet';
+import * as L from 'leaflet/dist/leaflet';
+
 
 const MAP = L.map('map')
-
+var markersCluster = []
 
 async function fetchAPI(url){
     const response = await fetch(url)
     const data = await response.json()
     return data
+}
+
+async function removeAllMarkers(){
+    for(let j = 0; j < markersCluster.length; j++){
+        markersCluster[j].remove()
+    }
 }
 
 
@@ -22,7 +29,7 @@ async function createMap(){
     for(let i = 0; i < data.length; i++){
         const marker = L.marker([data[i].latitude, data[i].longitude]).addTo(ma);
         marker.bindPopup(`<b>${data[i].nome_fantasia}!</b><br>${data[i].logradouro} - ${data[i].numero}.`).openPopup();
-
+        markersCluster.push(marker)
     }
 }
 
@@ -37,12 +44,21 @@ async function addSearchListener(){
 async function updateMap(){
     const loader = document.getElementById('loader')
 
-    MAP.unload()
-    loader.style.display = 'block'
+    // loader.style.display = 'block'
+    removeAllMarkers()
+    
 
 
+    const data = await fetchAPI("http://127.0.0.1:9000/accounts/api/v1/accounts/produtores")
 
-    loader.style.display = 'none'
+    for(let i = 0; i < data.length; i++){
+        const marker = L.marker([data[i].latitude, data[i].longitude]).addTo(MAP);
+        marker.bindPopup(`<b>${data[i].nome_fantasia}!</b><br>${data[i].logradouro} - ${data[i].numero}.`).openPopup();
+
+    }
+
+
+    // loader.style.display = 'none'
 
 }
 
