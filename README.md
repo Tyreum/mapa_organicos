@@ -32,3 +32,12 @@ Dependencias:
 Banco de dados:
 
     python manage.py migrate
+
+
+Frontend:
+
+    npm install 
+
+    npm run dev 
+
+    npm run build

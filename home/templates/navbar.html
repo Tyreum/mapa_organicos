@@ -1,0 +1,42 @@
+{% load static %}
+
+<section id="navbar" class="navbar">
+
+    <div class="navbar-logo-container">
+        <img src="{% static 'img/logo.png' %}">
+    </div>
+
+    <div class="navbar-items-container">
+
+    </div>
+
+    <div class="navbar-searchbar">
+
+   
+
+    </div>
+
+    <div class="navbar-user-icon">
+
+        {% if user.is_autheticated %}
+
+            <div class="icon-container">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        
+        {% else %}
+
+            <a class="register-button" id="registerButton">
+                Registre-se
+            </a>
+
+            <div class="register-options" id="registerOptions">
+                <a href="/register?tipo=usuario">Usuario</a>
+                <a href="/register?tipo=produtor">Produtor</a>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
