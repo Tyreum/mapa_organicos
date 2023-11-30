@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib import admin
 
 # Create your models here.
 
@@ -26,3 +27,6 @@ class Produtor(models.Model):
     latitude = models.CharField(max_length=20, null=True, blank=True)
     longitude = models.CharField(max_length=20, null=True, blank=True)
     tipo_produtor = models.CharField(max_length=1, choices=TIPO_PRODUTOR)
+
+
+admin.site.register(Produtor)
