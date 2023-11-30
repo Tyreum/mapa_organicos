@@ -4,5 +4,7 @@ from accounts import views
 
 urlpatterns = [
     path("", views.accounts),
-    path("api/v1/accounts/produtores", views.Produtores.as_view())
+    path("api/v1/accounts/produtores", views.Produtores.as_view()),
+
+    path("register", views.RegisterView.as_view())
 ]

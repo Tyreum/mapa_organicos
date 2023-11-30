@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="register-form-container">
+    <form class="register-form">
+        <label>Nome Titular</label>
+        <input type="text">
+
+        <label>Sobrenome Titular</label>
+        <input type="text">
+
+        <label>Email</label>
+        <input type="email">
+
+        <label>Senha</label>
+        <input type="password">
+
+        <label>Confirmação de senha</label>
+        <input type="password2">
+
+        <label>Nome Fantasia</label>
+        <input type="text">
+
+        <label>Logradouro</label>
+        <input type="text">
+
+        <label>Numero</label>
+        <input type="text">
+
+        <label>Latitude</label>
+        <input type="text">
+
+        <label>Longitude</label>
+        <input type="text">
+
+        <label>Tipo produtor</label>
+        <select>
+            <option value="F">Feira Orgânica</option>
+            <option value="P">Produtor</option>
+            <option value="C">Comerciante</option>
+        </select>
+
+        <button>Enviar</button>
+
+    </form>
+</div>
+
+{% endblock content %}

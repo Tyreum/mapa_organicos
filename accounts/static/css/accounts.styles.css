@@ -1,0 +1,13 @@
+.register-form-container{
+    margin: 10rem;
+    margin-top: 2rem;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form > input,  .register-form > button, .register-form > select{
+    width: 30%;
+}

@@ -44,22 +44,14 @@ async function addSearchListener(){
 async function updateMap(){
     const loader = document.getElementById('loader')
 
-    // loader.style.display = 'block'
     removeAllMarkers()
-    
-
 
     const data = await fetchAPI("http://127.0.0.1:9000/accounts/api/v1/accounts/produtores")
-
     for(let i = 0; i < data.length; i++){
         const marker = L.marker([data[i].latitude, data[i].longitude]).addTo(MAP);
         marker.bindPopup(`<b>${data[i].nome_fantasia}!</b><br>${data[i].logradouro} - ${data[i].numero}.`).openPopup();
 
     }
-
-
-    // loader.style.display = 'none'
-
 }
 
 

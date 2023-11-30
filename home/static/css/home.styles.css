@@ -232,3 +232,13 @@ html, body{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+.register-form-container{
+    margin: 10rem;
+    margin-top: 2rem;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+}
