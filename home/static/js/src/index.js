@@ -27,8 +27,17 @@ async function createMap(){
     const data = await fetchAPI("http://127.0.0.1:9000/accounts/api/v1/accounts/produtores")
 
     for(let i = 0; i < data.length; i++){
-        const marker = L.marker([data[i].latitude, data[i].longitude]).addTo(ma);
+        const marker = L.marker([data[i].latitude, data[i].longitude], {color:"red"}).addTo(ma);
         marker.bindPopup(`<b>${data[i].nome_fantasia}!</b><br>${data[i].logradouro} - ${data[i].numero}.`).openPopup();
+        
+        if(data[i].tipo_produtor === 'F'){
+            marker._icon.classList.add("green-marker");
+        }
+        else if(data[i].tipo_produtor === 'P'){
+            marker._icon.classList.add("green-marker");
+        }
+
+
         markersCluster.push(marker)
     }
 }

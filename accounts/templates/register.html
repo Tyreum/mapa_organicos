@@ -6,39 +6,43 @@
 {% block content %}
 
 <div class="register-form-container">
-    <form class="register-form">
+    <form class="register-form" action="/accounts/register" method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username">
+
         <label>Nome Titular</label>
-        <input type="text">
+        <input type="text" name="first_name">
 
         <label>Sobrenome Titular</label>
-        <input type="text">
+        <input type="text" name="last_name">
 
         <label>Email</label>
-        <input type="email">
+        <input type="email" name="email">
 
         <label>Senha</label>
-        <input type="password">
+        <input type="password" name="password1">
 
         <label>Confirmação de senha</label>
-        <input type="password2">
+        <input type="password" name="password2">
 
         <label>Nome Fantasia</label>
-        <input type="text">
+        <input type="text" name="nome_fantasia">
 
         <label>Logradouro</label>
-        <input type="text">
+        <input type="text" name="logradouro">
 
         <label>Numero</label>
-        <input type="text">
+        <input type="text" name="numero">
 
         <label>Latitude</label>
-        <input type="text">
+        <input type="text" name="latitude">
 
         <label>Longitude</label>
-        <input type="text">
+        <input type="text" name="longitude">
 
         <label>Tipo produtor</label>
-        <select>
+        <select name="tipo_produtor">
             <option value="F">Feira Orgânica</option>
             <option value="P">Produtor</option>
             <option value="C">Comerciante</option>
@@ -46,7 +50,11 @@
 
         <button>Enviar</button>
 
+        
+        
     </form>
+
+    
 </div>
 
 {% endblock content %}

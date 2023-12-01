@@ -241,4 +241,19 @@ html, body{
 .register-form{
     display: flex;
     flex-direction: column;
+    width: 50rem;
+    justify-content: center;
+    background-color: #f5f5f5c4;
+    padding: 2rem;
+    border-radius: 20px;
+    align-items: center;
+}
+
+
+.red-marker{
+    filter: hue-rotate(150deg);
+}
+
+.green-marker{
+    filter: hue-rotate(250deg);
 }

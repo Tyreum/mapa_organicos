@@ -1,6 +1,8 @@
 .register-form-container{
     margin: 10rem;
     margin-top: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .register-form{
@@ -9,5 +11,17 @@
 }
 
 .register-form > input,  .register-form > button, .register-form > select{
-    width: 30%;
+    width: 50%;
+    border: none;
+    height: 1.5rem;
+    border-radius: 11px;
+}
+
+.register-form > button{
+    margin-top: 4rem;
+}
+
+.register-form > label{
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
 }
