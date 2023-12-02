@@ -100,6 +100,7 @@ html, body{
 .map-filter-form{
     width: 90%;
     display: flex;
+    justify-content: space-between;
 }
 
 .filter-box{
@@ -206,12 +207,17 @@ html, body{
 
 .register-button{
     padding: 1.2rem;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
     background-color: #fff;
     color: #017e37;
     font-size: 22px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.register-button.lc{
+    border-radius: 0 12px 12px 0;
+    border-left: 1px solid #125b1436;
 }
 
 #map{

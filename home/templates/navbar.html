@@ -18,7 +18,7 @@
 
     <div class="navbar-user-icon">
 
-        {% if user.is_autheticated %}
+        {% if user.is_authenticated %}
 
             <div class="icon-container">
                 <i class="fa-solid fa-user"></i>
@@ -26,7 +26,12 @@
         
         {% else %}
 
-            <a class="register-button" id="registerButton">
+            <a class="register-button" href="/accounts/login"> 
+                Login
+            </a>
+
+
+            <a class="register-button lc" id="registerButton">
                 Registre-se
             </a>
 

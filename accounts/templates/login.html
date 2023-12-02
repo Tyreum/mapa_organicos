@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="register-form-container">
+    <form class="register-form" action="/accounts/login" method="POST">{% csrf_token %}
+
+        <label>Username</label>
+        <input type="text" name="username">
+
+        <label>Senha</label>
+        <input type="password" name="password">
+
+        <button>Enviar</button>
+
+        {% for message in messages %}
+    
+            <span><br></span> {{ message }}
+
+        {% endfor %}
+    </form>
+
+    
+</div>
+
+{% endblock content %}

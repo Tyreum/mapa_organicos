@@ -8,8 +8,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Produtor
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
+from django.contrib.auth.forms import AuthenticationForm
 import json
 
 # Create your views here.
@@ -84,3 +85,25 @@ class RegisterView(View):
 
         return redirect('/')
 
+
+class LoginView(View):
+
+    def get(self, *args, **kwargs):
+
+        return render(self.request, 'login.html')
+
+    def post(self, *args, **kwargs):
+        print(self.request.POST)
+        form = AuthenticationForm(self.request, self.request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(self.request, username=username, password=password)
+            if user is not None:
+                login(self.request, user)
+                messages.success(self.request, f'Welcome, {username}!')
+                return redirect('/') 
+            
+        print(form.cleaned_data)
+        messages.error(self.request, 'Invalid username or password.')
+        return render(self.request, 'login.html')
