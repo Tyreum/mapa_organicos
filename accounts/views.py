@@ -11,12 +11,30 @@ from .models import Produtor
 from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
 from django.contrib.auth.forms import AuthenticationForm
+
 import json
 
 # Create your views here.
 
 def accounts(request):
     return render(request, "accounts.html")
+
+
+def perfil(request, id_user):
+
+    if username := request.user:
+        user_obj = User.objects.get(username=username)
+        if user_obj.id == id_user:
+            return render(request, 'perfil-private.html')
+        else:
+            return render(request, 'perfil-public.html')
+    else:
+        print(":C")
+
+    
+
+
+
 
 
 class Produtores(APIView):
