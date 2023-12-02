@@ -50,7 +50,50 @@
 
 </div>
 
+<h3>Produtores:</h3>
+
 <div class="list-container">
+
+    {% for produtor in produtores %}
+
+    <div class="card-produtor">
+
+        <div class="img-produtor">
+
+        </div>
+
+        <div class="infos-produtor">
+
+            <h6 class="nome-infos-produtor">
+                {{ produtor.nome_fantasia }}
+            </h6>
+
+            <div class="subcard-infos-produtor">
+                <p class="endereco-infos-produtor">
+                    {{ produtor.logradouro }}
+                </p>
+                -
+                <p class="">
+                    {{ produtor.numero }}
+                </p>
+            </div>
+
+        </div>
+
+        <div class="visitar-infos-card">
+
+            <a class="botao-visitar-infos-card" href="/accounts/perfil/{{ produtor.id }}">
+                
+                Visitar
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+            </a>
+
+        </div>
+        
+    </div>
+
+    {% endfor %}
 
 </div>
 

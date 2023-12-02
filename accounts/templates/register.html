@@ -6,8 +6,8 @@
 {% block content %}
 
 <div class="register-form-container">
-    <form class="register-form" action="/accounts/register" method="POST">
-        {% csrf_token %}
+    <form class="register-form" action="/accounts/register" method="POST">{% csrf_token %}
+
         <label>Username</label>
         <input type="text" name="username">
 
@@ -50,8 +50,11 @@
 
         <button>Enviar</button>
 
-        
-        
+        {% for message in messages %}
+    
+            <span><br></span> {{ message }}
+
+        {% endfor %}
     </form>
 
     

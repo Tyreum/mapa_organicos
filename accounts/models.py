@@ -28,5 +28,8 @@ class Produtor(models.Model):
     longitude = models.CharField(max_length=20, null=True, blank=True)
     tipo_produtor = models.CharField(max_length=1, choices=TIPO_PRODUTOR)
 
+    def __str__(self):
+        return f"{self.nome_fantasia} - {self.user.username}"
+
 
 admin.site.register(Produtor)

@@ -52,15 +52,22 @@ class RegisterView(View):
         # Validate passwords
         if password1 != password2:
             messages.error(self.request, 'Passwords do not match')
-            return render(self.request, 'register.html', {'validation_messages': messages})
+            return render(self.request, 'register.html')
+
+        if password1 == '':
+            messages.error(self.request, 'Passwords cannot be blank')
+            return render(self.request, 'register.html')
 
         # Create User
         try:
             user = User.objects.create_user(username=username, email=email, password=password1,
                                             first_name=first_name, last_name=last_name)
-        except IntegrityError:
+        except IntegrityError as ex:
             messages.error(self.request, 'Username or email already exists')
-            return render(self.request, 'register.html', {'validation_messages': messages})
+            return render(self.request, 'register.html')
+        except ValueError as ex:
+            messages.error(self.request, ex)
+            return render(self.request, 'register.html')
 
         login(self.request, user)
 
@@ -75,5 +82,5 @@ class RegisterView(View):
             tipo_produtor=tipo_produtor
         )
 
-        return redirect('home')
+        return redirect('/')
 

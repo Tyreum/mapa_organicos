@@ -136,8 +136,72 @@ html, body{
 .list-container{
     height: 65rem;
     margin: 1rem;
-    background-color: #eaeaea;
+    background-color: #ebf7e5;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.card-produtor{
+    height: 8rem;
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 0 2rem 0 rgb(136 152 170 / 21%);
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.img-produtor{
+    width: 15%;
+}
+
+.infos-produtor{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly
+}
+
+.nome-infos-produtor{
+    font-size: 22px;
+
+}
+
+.subcard-infos-produtor{
+    display: flex;
+}
+
+.endereco-infos-produtor{
+
+}
+
+.visitar-infos-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-visitar-infos-card{
+    border: 1px solid;
+    height: 2rem;
+    width: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+    background-color: #b6dfb6;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.botao-visitar-infos-card:hover{
+    height: 2.3rem;
+    width: 5.3rem;
+    transition: 400ms;
 }
 
 .register-button{
