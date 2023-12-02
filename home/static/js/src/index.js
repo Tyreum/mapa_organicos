@@ -2,6 +2,7 @@ import * as L from 'leaflet/dist/leaflet';
 
 
 const MAP = L.map('map')
+var parser = new DOMParser();
 var markersCluster = []
 
 async function fetchAPI(url){
@@ -16,10 +17,35 @@ async function removeAllMarkers(){
     }
 }
 
-async function updateProdutorCardList(data, element){
-    const cardsNode = document.getElementsByClassName('card-produtor');
+async function setProdutorList(data){
 
-    
+    const template = `
+        <div class="card-produtor">
+            <div class="img-produtor">
+            </div>
+            <div class="infos-produtor">
+                <h6 class="nome-infos-produtor">
+                    ${ data.nome_fantasia }
+                </h6>
+                <div class="subcard-infos-produtor">
+                    <p class="endereco-infos-produtor">
+                        ${ data.logradouro }
+                    </p>
+                    -
+                    <p class="">
+                        ${ data.numero }
+                    </p>
+                </div>
+            </div>
+            <div class="visitar-infos-card">
+                <a class="botao-visitar-infos-card" href="/accounts/perfil/${ data.id }">
+                    Visitar
+                    <i class="fa-solid fa-diamond-turn-right"></i>
+                </a>
+            </div>
+        </div>
+    `
+    return template
 }
 
 async function setMarkerColor(marker, data){
@@ -51,7 +77,6 @@ async function createMap(){
 
     for(let i = 0; i < data.length; i++){
         setMarkers(data[i], ma);
-        updateProdutorCardList(data, data)
     }
 }
 
@@ -75,15 +100,28 @@ async function getFilterValues(){
     }  
 }
 
+async function removeElementsListProdutor(){
+    const elements = Array.from(document.getElementsByClassName('card-produtor'));
+
+    elements.forEach((element) =>{
+        element.remove()
+    })
+}
+
 async function updateMap(){
     removeAllMarkers()
+    removeElementsListProdutor()
 
+    const listElement = document.getElementById('list-container')
     const data = await fetchAPI(await getFilterValues())
     for(let i = 0; i < data.length; i++){
         const marker = L.marker([data[i].latitude, data[i].longitude]).addTo(MAP);
         marker.bindPopup(`<b>${data[i].nome_fantasia}!</b><br>${data[i].logradouro} - ${data[i].numero}.`).openPopup();
         await setMarkerColor(marker, data[i]);
         markersCluster.push(marker)
+
+        var doc = parser.parseFromString(await setProdutorList(data[i]), 'text/html');
+        listElement.appendChild(doc.body.firstChild);
     }
 }
 
