@@ -7,7 +7,7 @@
 <div class="map-filter-container">
 
     <form class="map-filter-form">
-        <div class="filter-box">
+        <!-- <div class="filter-box">
             <label>Distancia</label>
             <div class="range-container">
                 <input type="range" min="1" max="30" step="1" value="1" id="kilometerRange">
@@ -17,25 +17,26 @@
                 <div class="range-mark" id="rangeMark20">20 km</div>
                 <div class="range-mark" id="rangeMark30">30+ km</div>  
             </div>
-        </div>
+        </div> -->
 
         <div class="filter-box">
             <label>Nome produtor</label>
-            <input type="text" class="filter-input-text">
+            <input type="text" class="filter-input-text" id="value-filter-nome">
         </div>
 
         <div class="filter-box">
             <label>Bairro</label>
-            <select class="filter-select-box">
-                <option>ds</option>
-                <option>ds</option>
+            <select class="filter-select-box" id="value-filter-bairro">
+                <option></option>
+                <option value="zs">Zona Sul</option>
+                <option value="zo">Zona Oeste</option>
                 <option>ds</option>
                 <option>ds</option>
             </select>
         </div>
 
         <div class="filter-box">
-            <div class="buscar-button">
+            <div class="buscar-button" id="buscar-button">
                 Buscar
             </div>
         </div>
@@ -50,7 +51,50 @@
 
 </div>
 
-<div class="list-container">
+<h3>Produtores:</h3>
+
+<div class="list-container" id="list-container">
+
+    {% for produtor in produtores %}
+
+    <div class="card-produtor">
+
+        <div class="img-produtor">
+
+        </div>
+
+        <div class="infos-produtor">
+
+            <h6 class="nome-infos-produtor">
+                {{ produtor.nome_fantasia }}
+            </h6>
+
+            <div class="subcard-infos-produtor">
+                <p class="endereco-infos-produtor">
+                    {{ produtor.logradouro }}
+                </p>
+                -
+                <p class="">
+                    {{ produtor.numero }}
+                </p>
+            </div>
+
+        </div>
+
+        <div class="visitar-infos-card">
+
+            <a class="botao-visitar-infos-card" href="/accounts/perfil/{{ produtor.id }}">
+                
+                Visitar
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+            </a>
+
+        </div>
+        
+    </div>
+
+    {% endfor %}
 
 </div>
 

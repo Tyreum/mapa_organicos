@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from accounts.models import *
 
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'home.html')
+    produtores = Produtor.objects.all()
+
+    return render(request, 'home.html', {'produtores' : produtores})
