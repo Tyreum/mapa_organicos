@@ -11,6 +11,7 @@ from .models import Produtor
 from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
 from django.contrib.auth.forms import AuthenticationForm
+from home.utils import get_zone_coordinates
 
 import json
 
@@ -29,22 +30,35 @@ def perfil(request, id_user):
         else:
             return render(request, 'perfil-public.html')
     else:
-        print(":C")
-
-    
-
-
-
+        redirect('/accounts/login')
 
 
 class Produtores(APIView):
 
     def get(self, *args, **kwargs):
-        a = Produtor.objects.all()
+        produtores = Produtor.objects.all()
 
-        b = ProdutorSerializer(a, many=True)
+        if nome_produtor := self.request.GET.get('nomeProdutor'):
+            produtores = produtores.filter(nome_fantasia__icontains=nome_produtor)
 
-        return Response(b.data)
+        if bairro := self.request.GET.get('bairroProdutor'):
+
+            zona = get_zone_coordinates()[bairro]
+            print(zona['limite_inferior'], zona['limite_superior'], zona['limite_esquerda'], zona['limite_direita'])
+
+            for i in produtores:
+                print(i.nome_fantasia)
+                print(i.latitude)
+                print(i.longitude)
+
+            produtores = produtores.filter(
+                latitude__range=(zona['limite_inferior'], zona['limite_superior']),
+                # longitude__range=(zona['limite_esquerda'], zona['limite_direita'])
+            )
+
+        serializer = ProdutorSerializer(produtores, many=True)
+
+        return Response(serializer.data)
 
 
 class RegisterView(View):
@@ -122,6 +136,5 @@ class LoginView(View):
                 messages.success(self.request, f'Welcome, {username}!')
                 return redirect('/') 
             
-        print(form.cleaned_data)
         messages.error(self.request, 'Invalid username or password.')
         return render(self.request, 'login.html')

@@ -53,7 +53,7 @@ async function setMarkerColor(marker, data){
         marker._icon.classList.add("green-marker");
     }
     else if(data.tipo_produtor === 'P'){
-        marker._icon.classList.add("green-marker");
+        marker._icon.classList.add("red-marker");
     }
 }
 
@@ -90,7 +90,8 @@ async function addSearchListener(){
 
 async function getFilterValues(){
     try{
-        const nomeProdutor = document.getElementById('value-filter-nome').innerHTML;
+        const nomeProdutor = document.getElementById('value-filter-nome').value;
+        console.log(nomeProdutor)
         const bairroProdutor = document.getElementById('value-filter-bairro').value;
         const url = `http://127.0.0.1:9000/accounts/api/v1/accounts/produtores?nomeProdutor=${nomeProdutor}&bairroProdutor=${bairroProdutor}`
         return url
